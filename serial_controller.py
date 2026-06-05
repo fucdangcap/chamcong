@@ -11,10 +11,13 @@ class ArduinoController:
         except Exception as e:
             print(f"Lỗi khi kết nối với Arduino: {e}")
     
-    def open_door(self):
+    def open_door(self, employee_name):
         if self.ser is not None and self.ser.is_open:
             try:
-                self.ser.write(b'1')
+                data_to_send = f"1:{employee_name}\n"
+                
+                self.ser.write(data_to_send.encode('utf-8'))
+                print(f"--> Đã gửi lệnh mở cửa + Tên: {data_to_send.strip()}")
             except Exception as e:
                 print("Lỗi khi gửi lệnh mở cửa: ", e)
     

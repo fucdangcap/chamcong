@@ -36,7 +36,7 @@ def main():
                 
             results = ai_module.scan_and_identify(frame)
             
-            for name, box in results:
+            for name, display_name, box in results:
                 top, right, bottom, left = box
                 
                 if name != "Unknown":
@@ -45,8 +45,8 @@ def main():
                     saved_box = box
                     
                     ai_module.mark_attendance(name)
-                    hardware_module.open_door()
-                    print(f"Mở cửa cho: {name}")
+                    hardware_module.open_door(display_name)
+                    print(f"Mở cửa cho: {display_name}")
                     
                     # Đặt đồng hồ đếm ngược 2 giây để giữ khung hình
                     time_to_close = time.time() + 2

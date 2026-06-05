@@ -57,5 +57,16 @@ class FaceRecognizer:
                 if faceDis[matchIndex] < 0.45:
                     name = self.known_face_names[matchIndex].upper()
                     
-            results.append((name, (top, right, bottom, left)))
+                    clean_name = name.replace("_", " ")
+                    words = clean_name.split()
+
+                    if len(words) >= 2:
+                        display_name = words[-2] + " " + words[-1]
+                    else:
+                        display_name = clean_name
+                    
+                    display_name = display_name[:16]  # Giới hạn tên hiển thị tối đa 16 ký tự
+            
+                    
+            results.append((name, display_name, (top, right, bottom, left)))
         return results
