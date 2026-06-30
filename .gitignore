@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+attendance.csv
+face_encodings_db.pkl
+logs/
+ImagesAttendancebackup/
+
+.vscode/
